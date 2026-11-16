@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f7ff">
-  <title>Orbit Academy — Space Quiz</title>
+  <title>Mission: Cosmic Quiz — Orbit Academy</title>
   <style>
     :root {
       color-scheme: light dark;
@@ -145,6 +145,23 @@
       font-size: clamp(27px, 6vw, 35px);
       line-height: 1.15;
       letter-spacing: -.035em;
+    }
+
+    #page-title {
+      position: relative;
+      isolation: isolate;
+    }
+
+    #page-title::before {
+      position: absolute;
+      z-index: -1;
+      inset: -6px -4px;
+      background:
+        radial-gradient(circle, var(--accent) 0 1px, transparent 1.5px) 2px 3px / 47px 31px,
+        radial-gradient(circle, var(--accent) 0 1.2px, transparent 1.7px) 22px 14px / 83px 41px;
+      opacity: .32;
+      pointer-events: none;
+      content: "";
     }
 
     .intro {
@@ -420,6 +437,16 @@
       22% { opacity: .95; }
       100% { opacity: .35; transform: translateY(14px) scale(1.04); }
     }
+    @keyframes title-stars-twinkle {
+      from { opacity: .22; }
+      to { opacity: .42; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      #page-title::before {
+        animation: title-stars-twinkle 6s ease-in-out infinite alternate;
+      }
+    }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
@@ -437,7 +464,7 @@
     <div class="content" id="app">
       <div class="brand"><span class="brand-mark" aria-hidden="true">✦</span> Orbit Academy</div>
       <p class="eyebrow">Mission briefing</p>
-      <h1 id="page-title">Space explorer quiz</h1>
+      <h1 id="page-title">Mission: Cosmic Quiz</h1>
       <p class="intro">Ten questions, one little trip across the cosmos. How much do you know about our universe?</p>
       <div class="stats">
         <span id="question-count">Question 1 of 10</span>
